@@ -1,0 +1,75 @@
+<html>
+    <body>
+        <div class="container">
+            <form id="todo-form">
+                <label for="title"> Title: </label>
+                    <br>
+                    <br>
+                <input id="title">
+                    <br>
+                    <br>
+                <label for="content"> Content: </label>
+                    <br>
+                    <br>
+                <textarea id="content">
+
+                </textarea>
+                    <br>
+                    <br>
+                <button type="submit"> add todo
+                </button>
+            </form>
+        </div>
+    </body>
+    <style>
+        .container {
+            margin: 12px;
+            padding: 2px;
+            text-align: center;
+            position: relatve;
+            width: 100%;
+        }
+        label {
+            color: blue;
+            font-size: 20px;
+        }
+        #title {
+            width: 70%;
+            border: 5px solid #000;
+            text-align: center;
+        }
+        #content {
+            width: 70%;
+            border: 5px solid #000;
+            text-align: center;
+            height: 120px;
+        }
+    </style>
+    <script>
+
+        const title = document.getElementById('title');
+        const content = document.getElementById('content');
+
+        const formFunction = (e) => {
+            e.preventDefault();
+
+                const todoTitle = document.createElement("h3");
+                todoTitle.innerText = title.value;
+                const todoContent = document.createElement("p");
+                todoContent.innerText = content.value;
+
+                document.body.appendChild(todoTitle);
+                document.body.appendChild(todoContent);
+
+                localStorage.setItem('todos', null);
+                console.log(localStorage.getItem('todos'));
+
+            title.value = "";
+            content.value = "";
+        }
+         
+
+        const form = document.getElementById("todo-form")
+        form.addEventListener("submit", formFunction)
+    </script>
+</html>
